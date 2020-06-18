@@ -1,5 +1,4 @@
 local items = require("items")
-local move = require("move")
 
 local patterns = {
     LARGE_COMPACT_MACHINE_5_BY_5 = {
@@ -9,14 +8,6 @@ local patterns = {
             { item = items.ENDER_PEARL, count = 1 },
         },
         catalyst = items.ENDER_PEARL,
-        collect = function()
-            move.strafRight(2)
-            items.take(items.ENDER_PEARL, 1)
-            move.up()
-            items.take(items.MACHINE_WALL, 98)
-            move.down()
-            move.turnAround()
-        end,
         design = {
             {
                 { items.MACHINE_WALL, items.MACHINE_WALL, items.MACHINE_WALL, items.MACHINE_WALL, items.MACHINE_WALL },
@@ -59,14 +50,6 @@ local patterns = {
             { item = items.ENDER_PEARL, count = 1 },
         },
         catalyst = items.ENDER_PEARL,
-        collect = function()
-            move.strafRight(2)
-            items.take(items.ENDER_PEARL, 1)
-            move.up()
-            items.take(items.MACHINE_WALL, 98)
-            move.down()
-            move.turnAround()
-        end,
         design = {
             {
                 { items.MACHINE_WALL, items.MACHINE_WALL, items.MACHINE_WALL, items.MACHINE_WALL, items.MACHINE_WALL },
@@ -109,18 +92,6 @@ local patterns = {
             { items.ENDER_PEARL, 1 },
         },
         catalyst = items.ENDER_PEARL,
-        collect = function()
-            move.strafRight(2)
-            items.take(items.ENDER_PEARL, 1)
-            move.up()
-            items.take(items.MACHINE_WALL, 26)
-            move.down()
-            move.strafRight()
-            items.take(items.IRON_BLOCK, 1)
-            move.turnLeft()
-            move.forward(1)
-            move.turnLeft()
-        end,
         design = {
             {
                 { items.MACHINE_WALL, items.MACHINE_WALL, items.MACHINE_WALL },
@@ -145,20 +116,6 @@ local patterns = {
             { items.ENDER_PEARL, 1 },
         },
         catalyst = items.ENDER_PEARL,
-        collect = function()
-            move.strafRight(2)
-            items.take(items.ENDER_PEARL, 1)
-            move.up()
-            items.take(items.MACHINE_WALL, 26)
-            move.down()
-            move.strafRight()
-            move.up()
-            items.take(items.IRON_BLOCK, 1)
-            move.down()
-            move.turnLeft()
-            move.forward(1)
-            move.turnLeft()
-        end,
         design = {
             {
                 { items.MACHINE_WALL, items.MACHINE_WALL, items.MACHINE_WALL },
@@ -184,20 +141,6 @@ local patterns = {
             { items.ENDER_PEARL, 1 },
         },
         catalyst = items.ENDER_PEARL,
-        collect = function()
-            move.strafRight(2)
-            items.take(items.ENDER_PEARL, 1)
-            move.up()
-            items.take(items.MACHINE_WALL, 20)
-            move.up()
-            items.take(items.GLITCHED_LARGE, 6)
-            move.up()
-            items.take(items.MACHINE_CASING, 1)
-            move.down(3)
-            move.turnLeft()
-            move.forward(1)
-            move.turnLeft()
-        end,
         design = {
             {
                 { items.MACHINE_WALL, items.MACHINE_WALL, items.MACHINE_WALL },
@@ -222,16 +165,6 @@ local patterns = {
             { item = items.REDSTONE, count = 1 },
         },
         catalyst = items.REDSTONE,
-        collect = function()
-            move.strafRight()
-            items.take(items.OBSIDIAN, 26)
-            move.up()
-            items.take(items.REDSTONE_BLOCK, 1)
-            move.up()
-            items.take(items.REDSTONE, 1)
-            move.down(2)
-            move.turnAround()
-        end,
         design = {
             {
                 { items.OBSIDIAN, items.OBSIDIAN, items.OBSIDIAN },
