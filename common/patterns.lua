@@ -5,8 +5,8 @@ local patterns = {
     LARGE_COMPACT_MACHINE_5_BY_5 = {
         size = 5,
         ingredients = {
-            { items.MACHINE_WALL, 98 },
-            { items.ENDER_PEARL, 1 },
+            { item = items.MACHINE_WALL, count = 98 },
+            { item = items.ENDER_PEARL, count = 1 },
         },
         catalyst = items.ENDER_PEARL,
         collect = function()
@@ -54,9 +54,9 @@ local patterns = {
     MAXIMUM_COMPACT_MACHINE_5_BY_5 = {
         size = 5,
         ingredients = {
-            { items.MACHINE_WALL, 98 },
-            { items.GLITCHED_GIANT, 1 },
-            { items.ENDER_PEARL, 1 },
+            { item = items.MACHINE_WALL, count = 98 },
+            { item = items.GLITCHED_GIANT, count = 1 },
+            { item = items.ENDER_PEARL, count = 1 },
         },
         catalyst = items.ENDER_PEARL,
         collect = function()
@@ -217,9 +217,9 @@ local patterns = {
     ENDER_PEARL = {
         size = 3,
         ingredients = {
-            { items.OBSIDIAN, 26 },
-            { items.REDSTONE_BLOCK, 1 },
-            { items.REDSTONE, 1 },
+            { item = items.OBSIDIAN, count = 26 },
+            { item = items.REDSTONE_BLOCK, count = 1 },
+            { item = items.REDSTONE, count = 1 },
         },
         catalyst = items.REDSTONE,
         collect = function()
