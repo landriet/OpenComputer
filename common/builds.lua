@@ -179,7 +179,7 @@ function builds.buildStructure(pattern)
 
     -- drop the catalyst
     move.back()
-    robot.select(pattern.catalyst[#pattern.catalyst])   
+    robot.select(pattern.catalyst[#pattern.catalyst])
     robot.drop()
 
     -- wait for the magic
@@ -201,4 +201,5 @@ function builds.buildStructure(pattern)
         move.turnAround()
     end
 end
+
 return builds
