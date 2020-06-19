@@ -19,33 +19,6 @@ local USE_REDSTONE_SIGNAL = true
 -------------------------------------------------------------------------------
 -- Inventory
 
-local function collectItems()
-    for i = 1, 16 do
-        inventory.suckFromSlot(sides.front, 1, 64)
-    end
-end
-
-local function findEmptySlot()
-    for i = 1, 16 do
-        if inventory.getStackInInternalSlot(i) == nil then
-            return i
-        end
-    end print("no empty slot")
-end
-
-local function take(item, count)
-    local emptySlot
-    if count > 64 then
-        emptySlot = findEmptySlot()
-        item.slots[#item.slots + 1] = emptySlot
-        robot.select(emptySlot)
-        inventory.suckFromSlot(sides.front, 1, count - 64)
-    end
-    emptySlot = findEmptySlot()
-    item.slots[#item.slots + 1] = emptySlot
-    robot.select(emptySlot)
-    inventory.suckFromSlot(sides.front, 1, count)
-end
 
 local function place(item)
     robot.select(item.slots[#item.slots])
@@ -159,16 +132,6 @@ local function buildMachineWall(times)
         local tmp = times - ((i - 1) * 32)
         local nb = tmp > 32 and 32 or tmp
 
-        --  fetch item
-        move.strafRight()
-        move.up(2)
-        take(items.REDSTONE, nb * 2)
-        move.down(2)
-        move.strafRight(2)
-        take(items.IRON_BLOCK, nb * 1)
-        move.turnLeft()
-        move.forward(3)
-        move.turnLeft()
 
         for j = 1, nb do
             move.forward()
@@ -211,7 +174,6 @@ end
 
 local function buildStructure(pattern)
     -- collect items
-    collectItems()
 
     -- build the structure
     if pattern.size == 5 then
