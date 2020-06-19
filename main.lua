@@ -18,6 +18,8 @@ local function run()
     elseif choice == 2 then
         local builder = require("fp/builder")
         builder.run()
+    else
+        print("invalid choice")
     end
 end
 
