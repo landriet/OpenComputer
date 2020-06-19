@@ -211,6 +211,7 @@ end
 local builder = {}
 
 function builder.run()
+    print("Start")
     modem.open(2)
 
     local _, _, from, port, _, message = event.pull("modem_message")
