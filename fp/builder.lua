@@ -2,7 +2,7 @@ local component = require("component")
 local robot = require("robot")
 local sides = require('sides')
 local inventory = component.inventory_controller
-local redstone = component.redstone
+--local redstone = component.redstone
 local modem = component.modem
 
 local items = require("fp/items")
@@ -35,17 +35,17 @@ end
 
 local function waitTheMagic(waitTime)
     if USE_REDSTONE_SIGNAL then
-        os.sleep()
-        while redstone.getInput(sides.right) > 0 do
-            os.sleep()
-        end
+--        os.sleep()
+--        while redstone.getInput(sides.right) > 0 do
+--            os.sleep()
+--        end
     else
         os.sleep(waitTime)
     end
 end
 
 local function switchVacuum(high)
-    redstone.setOutput(sides.right, high and 15 or 0)
+--    redstone.setOutput(sides.right, high and 15 or 0)
 end
 
 local function dropAllItems()
