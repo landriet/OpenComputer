@@ -12,10 +12,10 @@ local function run()
 
     io.write("?")
     local choice = io.read()
-    if choice == 1 then
+    if choice == "1" then
         local master = require("fp/master")
         master.run()
-    elseif choice == 2 then
+    elseif choice == "2" then
         local builder = require("fp/builder")
         builder.run()
     else
