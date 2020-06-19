@@ -1,5 +1,6 @@
 for k, _ in pairs(package.loaded) do
     if k:sub(1, 2) == "fp" then
+        print(package.loaded[k], "unloaded")
         package.loaded[k] = nil
     end
 end
