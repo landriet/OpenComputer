@@ -1,3 +1,4 @@
+local component = require("component")
 local patterns = require("fp/patterns")
 local rs = require("fp/rs")
 local modem = component.modem
