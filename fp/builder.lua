@@ -4,6 +4,7 @@ local sides = require('sides')
 local inventory = component.inventory_controller
 --local redstone = component.redstone
 local modem = component.modem
+local event = require("event")
 
 local items = require("fp/items")
 local move = require("fp/move")
