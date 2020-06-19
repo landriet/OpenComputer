@@ -7,7 +7,7 @@ local rs = {}
 function rs.fetchAllItems(ingredients)
     for i = 1, #ingredients do
         local ingredient = ingredients[i]
-        local result = refineStorage.extractItem(ingredient.item, ingredient.count, sides.dowm)
+        local result = refineStorage.extractItem(ingredient.item, ingredient.count, sides.south)
         if result == false then
             return false
         end

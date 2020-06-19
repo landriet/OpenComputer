@@ -5,7 +5,6 @@ for k, _ in pairs(package.loaded) do
     end
 end
 
-
 local function run()
     print("What am I ?")
     print("[1] Computer")
