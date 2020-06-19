@@ -1,10 +1,8 @@
-local patterns = require("patterns")
-local rs = require("rs")
+local patterns = require("fp/patterns")
+local rs = require("fp/rs")
 
 local function run()
-    print(rs)
-    print(patterns.ENDER_PEARL.ingrediants)
-    rs.fetchAllItems(patterns.ENDER_PEARL.ingrediants)
+    rs.fetchAllItems(patterns.ENDER_PEARL.ingredients)
     os.sleep(2)
 end
 

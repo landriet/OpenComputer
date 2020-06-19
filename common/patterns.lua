@@ -1,4 +1,4 @@
-local items = require("items")
+local items = require("fp/items")
 
 local patterns = {
     LARGE_COMPACT_MACHINE_5_BY_5 = {
