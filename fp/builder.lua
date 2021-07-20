@@ -154,10 +154,18 @@ local function buildStructure(pattern)
 
     -- fetch final product or activate the vacuum
     if SUCK_FINAL_PRODUCT then
-        move.forward(3)
+        if pattern.size == 5 then
+            move.forward(3)
+        else
+            move.forward(2)
+        end
         robot.suck()
         move.turnAround()
-        move.forward(3)
+        if pattern.size == 5 then
+            move.forward(3)
+        else
+            move.forward(2)
+        end
         move.up()
         move.up()
         dropAllItems()
