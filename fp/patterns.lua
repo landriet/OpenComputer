@@ -40,7 +40,8 @@ local patterns = {
                 { items.MACHINE_WALL, items.MACHINE_WALL, items.MACHINE_WALL, items.MACHINE_WALL, items.MACHINE_WALL },
                 { items.MACHINE_WALL, items.MACHINE_WALL, items.MACHINE_WALL, items.MACHINE_WALL, items.MACHINE_WALL },
             }
-        }
+        },
+        timeToWait = 23
     },
     MAXIMUM_COMPACT_MACHINE_5_BY_5 = {
         size = 5,
@@ -82,7 +83,8 @@ local patterns = {
                 { items.MACHINE_WALL, items.MACHINE_WALL, items.MACHINE_WALL, items.MACHINE_WALL, items.MACHINE_WALL },
                 { items.MACHINE_WALL, items.MACHINE_WALL, items.MACHINE_WALL, items.MACHINE_WALL, items.MACHINE_WALL },
             }
-        }
+        },
+        timeToWait = 23
     },
     SMALL_COMPACT_MACHINE = {
         description = "Small compact machine",
@@ -107,7 +109,8 @@ local patterns = {
                 { items.MACHINE_WALL, items.MACHINE_WALL, items.MACHINE_WALL },
                 { items.MACHINE_WALL, items.MACHINE_WALL, items.MACHINE_WALL },
             }
-        }
+        },
+        timeToWait = 25
     },
     NORMAL_COMPACT_MACHINE = {
         description = "Normal compact machine",
@@ -159,7 +162,8 @@ local patterns = {
                 { items.MACHINE_WALL, items.GLITCHED_LARGE, items.MACHINE_WALL },
                 { items.MACHINE_WALL, items.MACHINE_WALL, items.MACHINE_WALL },
             }
-        }
+        },
+        timeToWait = 23
     },
     ENDER_PEARL = {
         description = "Ender pearl",
@@ -185,7 +189,7 @@ local patterns = {
                 { items.OBSIDIAN, items.OBSIDIAN, items.OBSIDIAN },
             }
         },
-        timeToWait = 23
+        timeToWait = 13
     },
 }
 

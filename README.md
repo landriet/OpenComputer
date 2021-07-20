@@ -10,3 +10,12 @@ USE_REDSTONE_SIGNAL : true by default. If set to true, it will use the strength 
 
 ![alt text](https://github.com/landriet/OpenComputer/blob/master/2020-06-13_13.37.19.png?raw=true)
 
+Installation :
+
+oppm register landriet/OpenComputer
+
+oppm install craft
+
+Run :
+
+/usr/bin/main.lua
