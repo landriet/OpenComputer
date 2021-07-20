@@ -210,8 +210,8 @@ end
 
 local function promptWhatToBuild()
     print("What would you like to craft ?")
-    print("[1] " + patterns.ENDER_PEARL.description)
-    print("[2] " + patterns.NORMAL_COMPACT_MACHINE.description)
+    print("[1] " .. patterns.ENDER_PEARL.description)
+    print("[2] " .. patterns.NORMAL_COMPACT_MACHINE.description)
     io.write("?")
     local choice = io.read()
 
