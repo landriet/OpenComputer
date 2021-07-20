@@ -113,9 +113,9 @@ local patterns = {
         description = "Normal compact machine",
         size = 3,
         ingredients = {
-            { items.MACHINE_WALL, 26 },
-            { items.GOLD_BLOCK, 1 },
-            { items.ENDER_PEARL, 1 },
+            { item = items.MACHINE_WALL, count = 26 },
+            { item = items.GOLD_BLOCK, count = 1 },
+            { item = items.ENDER_PEARL, count = 1 },
         },
         catalyst = items.ENDER_PEARL,
         design = {
@@ -138,10 +138,10 @@ local patterns = {
         description = "Giant compact machine",
         size = 3,
         ingredients = {
-            { items.MACHINE_WALL, 20 },
-            { items.GLITCHED_LARGE, 6 },
-            { items.MACHINE_CASING, 1 },
-            { items.ENDER_PEARL, 1 },
+            { item = items.MACHINE_WALL, count = 20 },
+            { item = items.GLITCHED_LARGE, count = 6 },
+            { item = items.MACHINE_CASING, count = 1 },
+            { item = items.ENDER_PEARL, count = 1 },
         },
         catalyst = items.ENDER_PEARL,
         design = {

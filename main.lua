@@ -11,7 +11,7 @@ local function run()
     print("[1] Computer")
     print("[2] Robot")
 
-    io.write("?")
+    io.write("? ")
     local choice = io.read()
     if choice == "1" then
         local master = require("fp/master")

@@ -219,13 +219,17 @@ local function promptWhatToBuild()
     io.write("How many times shall I craft?")
     local times = io.read()
     print("Confirmed operation.")
+
+
     for i = 1, times do
         print("Building ", i)
         if choice == "1" then
-            buildStructure(patterns.ENDER_PEARL)
+            inventory.takeAllItems(patterns.ENDER_PEARL.ingredients)
+            --buildStructure(patterns.ENDER_PEARL)
         end
         if choice == "2" then
-            buildStructure(patterns.NORMAL_COMPACT_MACHINE)
+            inventory.takeAllItems(patterns.NORMAL_COMPACT_MACHINE.ingredients)
+            --buildStructure(patterns.NORMAL_COMPACT_MACHINE)
         end
     end
     os.sleep(2)

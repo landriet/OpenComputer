@@ -1,6 +1,7 @@
 local component = require("component")
 local robot = require("robot")
 local sides = require('sides')
+local move = require("fp/move")
 
 local inventory = component.inventory_controller
 
@@ -34,6 +35,23 @@ function inventory.place(item)
     robot.place()
     if (inventory.getStackInInternalSlot(item.slots[#item.slots]) == nil) then
         table.remove(item, #item.slots)
+    end
+end
+
+function inventory.takeAllItems(ingredients)
+    for i = 1, #ingredients do
+        local ingredient = ingredients[i]
+        move.turnRight()
+        move.forward(ingredient.item.emplacement.x)
+        move.turnLeft()
+        move.up(ingredient.item.emplacement.y)
+
+        inventory.take(ingredient.item, ingredient.count)
+
+        move.down(ingredient.item.emplacement.y)
+        move.turnLeft()
+        move.forward(ingredient.item.emplacement.x)
+        move.turnLeft()
     end
 end
 
