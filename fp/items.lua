@@ -19,9 +19,21 @@ local items = {
         slots = {},
         emplacement = { x = 2, y = 0 }
     },
-    MACHINE_WALL = {},
-    IRON_BLOCK = {},
-    GOLD_BLOCK = {},
+    MACHINE_WALL = {
+        name = "minecraft:machine_wall",
+        slots = {},
+        emplacement = { x = 2, y = 1 }
+    },
+    IRON_BLOCK = {
+        name = "minecraft:iron_block",
+        slots = {},
+        emplacement = { x = 3, y = 0}
+    },
+    GOLD_BLOCK = {
+        name = "minecraft:gold_block",
+        slots = {},
+        emplacement = { x = 3, y = 1 }
+    },
     HOPPER = {},
     MACHINE_CASING = {},
     GLITCHED_LARGE = {},
