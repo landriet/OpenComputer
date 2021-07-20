@@ -15,6 +15,7 @@ function move._move(side)
 end
 
 function move.forward(dist)
+    print("forward " .. dist)
     if (dist ~= 0) then
         for _ = 1, dist or 1 do
             move._move(sides.front)
@@ -23,6 +24,7 @@ function move.forward(dist)
 end
 
 function move.back(dist)
+    print("back " .. dist)
     if (dist ~= 0) then
         for _ = 1, dist or 1 do
             move._move(sides.back)
@@ -31,6 +33,7 @@ function move.back(dist)
 end
 
 function move.up(dist)
+    print("up " .. dist)
     if (dist ~= 0) then
         for _ = 1, dist or 1 do
             move._move(sides.up)
@@ -39,6 +42,7 @@ function move.up(dist)
 end
 
 function move.down(dist)
+    print("down " .. dist)
     if (dist ~= 0) then
         for _ = 1, dist or 1 do
             move._move(sides.down)
@@ -47,18 +51,22 @@ function move.down(dist)
 end
 
 function move.turnLeft()
+    print("turnLeft")
     robot.turnLeft()
 end
 
 function move.turnRight()
+    print("turnRight")
     robot.turnRight()
 end
 
 function move.turnAround()
+    print("turnAround")
     robot.turnAround()
 end
 
 function move.strafLeft(dist)
+    print("strafLeft " .. dist)
     robot.turnLeft()
     for _ = 1, dist or 1 do
         robot.forward()
@@ -67,6 +75,7 @@ function move.strafLeft(dist)
 end
 
 function move.strafRight(dist)
+    print("strafRight " .. dist)
     robot.turnRight()
     for _ = 1, dist or 1 do
         robot.forward()
