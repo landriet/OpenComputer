@@ -85,6 +85,7 @@ local patterns = {
         }
     },
     SMALL_COMPACT_MACHINE = {
+        description = "Small compact machine",
         size = 3,
         ingredients = {
             { items.MACHINE_WALL, 26 },
@@ -109,6 +110,7 @@ local patterns = {
         }
     },
     NORMAL_COMPACT_MACHINE = {
+        description = "Normal compact machine",
         size = 3,
         ingredients = {
             { items.MACHINE_WALL, 26 },
@@ -133,6 +135,7 @@ local patterns = {
         }
     },
     GIANT_COMPACT_MACHINE_3_BY_3 = {
+        description = "Giant compact machine",
         size = 3,
         ingredients = {
             { items.MACHINE_WALL, 20 },
@@ -158,6 +161,7 @@ local patterns = {
         }
     },
     ENDER_PEARL = {
+        description = "Ender pearl",
         size = 3,
         ingredients = {
             { item = items.OBSIDIAN, count = 26 },

@@ -2,7 +2,7 @@ local component = require("component")
 local robot = require("robot")
 local sides = require('sides')
 
--------------------------------------------------------------------------------
+-- -----------------------------------------------------------------------------
 -- Mouvements
 
 local move = {}

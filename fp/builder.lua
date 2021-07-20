@@ -1,25 +1,24 @@
 local component = require("component")
 local robot = require("robot")
 local sides = require('sides')
-local inventory = component.inventory_controller
---local redstone = component.redstone
-local modem = component.modem
-local event = require("event")
+local redstone = component.redstone
+--local modem = component.modem
+--local event = require("event")
 
 local items = require("fp/items")
 local move = require("fp/move")
 local patterns = require("fp/patterns")
+local inventory = require("fp/inventory")
 
--------------------------------------------------------------------------------
--- Constants to ajust
+-- -----------------------------------------------------------------------------
+-- Constants to adjust
 
-local SUCK_FINAL_PRODUCT = false
-local USE_REDSTONE_SIGNAL = true
+local SUCK_FINAL_PRODUCT = true
+local USE_REDSTONE_SIGNAL = false
 
 
--------------------------------------------------------------------------------
+-- -----------------------------------------------------------------------------
 -- Inventory
-
 
 local function place(item)
     robot.select(item.slots[#item.slots])
@@ -34,19 +33,19 @@ local function dropCatalizer(item)
     robot.drop()
 end
 
-local function waitTheMagic(waitTime)
+local function waitForTheMagic(waitTime)
     if USE_REDSTONE_SIGNAL then
---        os.sleep()
---        while redstone.getInput(sides.right) > 0 do
---            os.sleep()
---        end
+        os.sleep()
+        while redstone.getInput(sides.right) > 0 do
+            os.sleep()
+        end
     else
         os.sleep(waitTime)
     end
 end
 
 local function switchVacuum(high)
---    redstone.setOutput(sides.right, high and 15 or 0)
+    redstone.setOutput(sides.right, high and 15 or 0)
 end
 
 local function dropAllItems()
@@ -70,13 +69,15 @@ local function nextRowOnTheLeft()
     move.back(2)
 end
 
--------------------------------------------------------------------------------
+-- -----------------------------------------------------------------------------
 -- Build
 
 local function buildColumn(size, direction, pattern)
     for i = 1, size do
         local item = pattern[direction == sides.up and i or size + 1 - i]
-        if item ~= nil then place(item) end
+        if item ~= nil then
+            place(item)
+        end
         if i ~= size then
             move._move(direction)
         end
@@ -92,7 +93,9 @@ local function buildPatternStartingOn(size, pattern, direction)
     end
     for i = 1, size do
         buildColumn(size, directions[i], pattern[i])
-        if i ~= size then move.back() end
+        if i ~= size then
+            move.back()
+        end
     end
 end
 
@@ -108,7 +111,6 @@ local function buildStructure3(design)
     move.down(2)
     move.strafLeft()
 end
-
 
 local function buildStructure5(design)
     move.forward(5)
@@ -127,12 +129,10 @@ local function buildStructure5(design)
     move.strafLeft(2)
 end
 
-
 local function buildMachineWall(times)
     for i = 1, math.ceil(times / 32) do
         local tmp = times - ((i - 1) * 32)
         local nb = tmp > 32 and 32 or tmp
-
 
         for j = 1, nb do
             move.forward()
@@ -148,7 +148,7 @@ local function buildMachineWall(times)
             dropCatalizer(items.REDSTONE)
 
             -- Wait the magic
-            waitTheMagic(5)
+            waitForTheMagic(5)
 
             if SUCK_FINAL_PRODUCT then
                 move.forward(3)
@@ -189,7 +189,7 @@ local function buildStructure(pattern)
     robot.drop()
 
     -- wait for the magic
-    waitTheMagic(13)
+    waitForTheMagic(13)
 
     -- fetch final product or activate the vacuum
     if SUCK_FINAL_PRODUCT then
@@ -208,18 +208,48 @@ local function buildStructure(pattern)
     end
 end
 
+local function promptWhatToBuild()
+    print("What would you like to craft ?")
+    print("[1] " + patterns.ENDER_PEARL.description)
+    print("[2] " + patterns.NORMAL_COMPACT_MACHINE.description)
+    io.write("?")
+    local choice = io.read()
+
+
+    io.write("How many times shall I craft?")
+    local times = io.read()
+    print("Confirmed operation.")
+    for i = 1, times do
+        print("Building ", i)
+        if choice == "1" then
+            buildStructure(patterns.ENDER_PEARL)
+        end
+        if choice == "2" then
+            buildStructure(patterns.NORMAL_COMPACT_MACHINE)
+        end
+    end
+    os.sleep(2)
+end
 
 local builder = {}
 
+
 function builder.run()
-    print("Start")
-    modem.open(2)
 
-    local _, _, from, port, _, message = event.pull("modem_message")
-    print("Got a message from " .. from .. " on port " .. port .. ": " .. tostring(message))
+    print("Connected to Refined Storage ?")
+    print("y/N")
 
---    buildStructure(patterns.ENDER_PEARL)
-    collectItems()
+    io.write("?")
+    local choice = io.read()
+    if choice == "y" then
+        --modem.open(2)
+        --
+        --local _, _, from, port, _, message = event.pull("modem_message")
+        --print("Got a message from " .. from .. " on port " .. port .. ": " .. tostring(message))
+    else
+        promptWhatToBuild()
+    end
+
 end
 
 return builder

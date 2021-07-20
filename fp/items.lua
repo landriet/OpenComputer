@@ -1,19 +1,23 @@
 local items = {
     OBSIDIAN = {
         name = "minecraft:obsidian",
-        slots = {}
+        slots = {},
+        emplacement = { x = 1, y = 0 }
     },
     REDSTONE_BLOCK = {
         name = "minecraft:redstone_block",
-        slots = {}
+        slots = {},
+        emplacement = { x = 1, y = 1 }
     },
     REDSTONE = {
         name = "minecraft:redstone",
-        slots = {}
+        slots = {},
+        emplacement = { x = 1, y = 2 }
     },
     ENDER_PEARL = {
         name = "minecraft:ender_pearl",
-        slots = {}
+        slots = {},
+        emplacement = { x = 2, y = 0 }
     },
     MACHINE_WALL = {},
     IRON_BLOCK = {},
