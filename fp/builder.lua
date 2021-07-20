@@ -129,50 +129,6 @@ local function buildStructure5(design)
     move.strafLeft(2)
 end
 
-local function buildMachineWall(times)
-    for i = 1, math.ceil(times / 32) do
-        local tmp = times - ((i - 1) * 32)
-        local nb = tmp > 32 and 32 or tmp
-
-        for j = 1, nb do
-            move.forward()
-            print("Building ", (i - 1) * 32 + j)
-            -- Begin construction
-            place(items.IRON_BLOCK)
-            move.up()
-            place(items.REDSTONE)
-            move.down()
-
-            -- Drop catalyst
-            move.back()
-            dropCatalizer(items.REDSTONE)
-
-            -- Wait the magic
-            waitForTheMagic(5)
-
-            if SUCK_FINAL_PRODUCT then
-                move.forward(3)
-                robot.suck()
-                move.back(2)
-            else
-                switchVacuum(true)
-                os.sleep()
-                switchVacuum(false)
-            end
-        end
-
-        if SUCK_FINAL_PRODUCT then
-            move.turnAround()
-            move.forward()
-            move.up()
-            dropAllItems()
-            move.down()
-        else
-            move.turnAround()
-        end
-    end
-end
-
 local function buildStructure(pattern)
     -- collect items
 
@@ -180,7 +136,6 @@ local function buildStructure(pattern)
     move.turnRight()
     move.forward()
     move.turnRight()
-    move.forward(3)
 
     -- build the structure
     if pattern.size == 5 then
@@ -204,7 +159,9 @@ local function buildStructure(pattern)
         move.turnAround()
         move.forward(3)
         move.up()
+        move.up()
         dropAllItems()
+        move.down()
         move.down()
     else
         switchVacuum(true)
@@ -230,11 +187,11 @@ local function promptWhatToBuild()
     for i = 1, times do
         print("Building ", i)
         if choice == "1" then
-            inventory.takeAllItems(patterns.ENDER_PEARL.ingredients)
+            inventory.takeAllItems(patterns.ENDER_PEARL)
             buildStructure(patterns.ENDER_PEARL)
         end
         if choice == "2" then
-            inventory.takeAllItems(patterns.NORMAL_COMPACT_MACHINE.ingredients)
+            inventory.takeAllItems(patterns.NORMAL_COMPACT_MACHINE)
             buildStructure(patterns.NORMAL_COMPACT_MACHINE)
         end
     end
