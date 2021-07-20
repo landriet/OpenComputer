@@ -77,8 +77,7 @@ function inventory.takeAllItems(ingredients)
     end
     move.turnLeft()
     move.forward(actualX)
-    --move.turnLeft()
-    move.turnRight()
+    move.turnLeft()
 end
 
 return inventory

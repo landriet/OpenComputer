@@ -107,7 +107,7 @@ local function buildStructure3(design)
     buildPatternStartingOn(3, design[2], sides.up)
     nextRowOnTheLeft()
     buildPatternStartingOn(3, design[3], sides.down)
-    -- Drop catalyst
+
     move.down(2)
     move.strafLeft()
 end
@@ -175,6 +175,12 @@ end
 
 local function buildStructure(pattern)
     -- collect items
+
+    -- move to position
+    move.turnRight()
+    move.forward()
+    move.turnRight()
+    move.forward(3)
 
     -- build the structure
     if pattern.size == 5 then
