@@ -64,7 +64,7 @@ function inventory.takeAllItems(ingredients)
         if diffY > 0 then
             move.up(diffY)
         elseif diffY < 0 then
-            move.down(diffY)
+            move.down(math.abs(diffY))
         end
         actualY = ingredient.item.emplacement.y
 
