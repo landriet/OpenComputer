@@ -200,7 +200,7 @@ local function promptWhatToBuild()
         end
         if choice == "2" then
             inventory.takeAllItems(patterns.NORMAL_COMPACT_MACHINE.ingredients)
-            --buildStructure(patterns.NORMAL_COMPACT_MACHINE)
+            buildStructure(patterns.NORMAL_COMPACT_MACHINE)
         end
     end
     os.sleep(2)
