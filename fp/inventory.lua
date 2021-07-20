@@ -52,7 +52,7 @@ function inventory.takeAllItems(ingredients)
         elseif diffX < 0 then
             move.turnLeft()
         end
-        move.forward(diffX)
+        move.forward(math.abs(diffX))
         if diffX > 0 then
             move.turnLeft()
         elseif diffX < 0 then
