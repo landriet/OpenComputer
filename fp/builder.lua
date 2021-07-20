@@ -225,11 +225,11 @@ local function promptWhatToBuild()
         print("Building ", i)
         if choice == "1" then
             inventory.takeAllItems(patterns.ENDER_PEARL.ingredients)
-            --buildStructure(patterns.ENDER_PEARL)
+            buildStructure(patterns.ENDER_PEARL)
         end
         if choice == "2" then
             inventory.takeAllItems(patterns.NORMAL_COMPACT_MACHINE.ingredients)
-            --buildStructure(patterns.NORMAL_COMPACT_MACHINE)
+            buildStructure(patterns.NORMAL_COMPACT_MACHINE)
         end
     end
     os.sleep(2)
