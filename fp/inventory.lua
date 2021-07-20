@@ -14,7 +14,8 @@ function inventory.findEmptySlot()
         if inventory.getStackInInternalSlot(i) == nil then
             return i
         end
-    end print("no empty slot")
+    end
+    print("no empty slot")
 end
 
 function inventory.take(item, count)
@@ -44,16 +45,38 @@ function inventory.takeAllItems(ingredients)
     local actualY = 0
     for i = 1, #ingredients do
         local ingredient = ingredients[i]
-        move.turnRight()
-        move.forward(ingredient.item.emplacement.x - actualX)
+        local diffX = ingredient.item.emplacement.x - actualX
+        if diffX > 0 then
+            move.turnRight()
+        elseif diffX < 0 then
+            move.turnLeft()
+        end
+        move.forward(diffX)
+        if diffX > 0 then
+            move.turnLeft()
+        elseif diffX < 0 then
+            move.turnRight()
+        end
         actualX = ingredient.item.emplacement.x
-        move.turnLeft()
 
-        move.up(ingredient.item.emplacement.y - actualY)
+        local diffY = ingredient.item.emplacement.y - actualY
+        if diffX > 0 then
+            move.up(diffY)
+        elseif diffX < 0 then
+            move.down(diffY)
+        end
         actualY = ingredient.item.emplacement.y
 
         inventory.take(ingredient.item, ingredient.count)
     end
+    if actualY > 0 then
+        move.down(actualY)
+    elseif actualY < 0 then
+        move.up(actualY)
+    end
+    move.turnLeft()
+    move.forward(actualX)
+    move.turnLeft()
 end
 
 return inventory
