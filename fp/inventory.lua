@@ -45,7 +45,8 @@ function inventory.takeAllItems(ingredients)
     local actualY = 0
     for i = 1, #ingredients do
         local ingredient = ingredients[i]
-        print("take ingredient " .. ingredient)
+        print("take ingredient")
+        print(ingredient)
         local diffX = ingredient.item.emplacement.x - actualX
         if diffX > 0 then
             move.turnRight()
