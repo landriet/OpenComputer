@@ -150,7 +150,7 @@ local function buildStructure(pattern)
     robot.drop(1)
 
     -- wait for the magic
-    waitForTheMagic(13)
+    waitForTheMagic(pattern.timeToWait)
 
     -- fetch final product or activate the vacuum
     if SUCK_FINAL_PRODUCT then

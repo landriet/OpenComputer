@@ -132,7 +132,8 @@ local patterns = {
                 { items.MACHINE_WALL, items.MACHINE_WALL, items.MACHINE_WALL },
                 { items.MACHINE_WALL, items.MACHINE_WALL, items.MACHINE_WALL },
             }
-        }
+        },
+        timeToWait = 23
     },
     GIANT_COMPACT_MACHINE_3_BY_3 = {
         description = "Giant compact machine",
@@ -183,7 +184,8 @@ local patterns = {
                 { items.OBSIDIAN, items.OBSIDIAN, items.OBSIDIAN },
                 { items.OBSIDIAN, items.OBSIDIAN, items.OBSIDIAN },
             }
-        }
+        },
+        timeToWait = 23
     },
 }
 
