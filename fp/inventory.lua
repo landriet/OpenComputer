@@ -2,6 +2,7 @@ local component = require("component")
 local robot = require("robot")
 local sides = require('sides')
 local move = require("fp/move")
+local move = require("fp/move")
 
 local inventory = component.inventory_controller
 
@@ -19,12 +20,12 @@ end
 function inventory.take(item, count)
     local emptySlot
     if count > 64 then
-        emptySlot = items.findEmptySlot()
+        emptySlot = inventory.findEmptySlot()
         item.slots[#item.slots + 1] = emptySlot
         robot.select(emptySlot)
         inventory.suckFromSlot(sides.front, 1, count - 64)
     end
-    emptySlot = items.findEmptySlot()
+    emptySlot = inventory.findEmptySlot()
     item.slots[#item.slots + 1] = emptySlot
     robot.select(emptySlot)
     inventory.suckFromSlot(sides.front, 1, count)
