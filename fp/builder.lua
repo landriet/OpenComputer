@@ -210,21 +210,21 @@ local builder = {}
 
 
 function builder.run()
-
-    print("Connected to Refined Storage ?")
-    print("y/N")
-
-    io.write("?")
-    local choice = io.read()
-    if choice == "y" then
-        --modem.open(2)
-        --
-        --local _, _, from, port, _, message = event.pull("modem_message")
-        --print("Got a message from " .. from .. " on port " .. port .. ": " .. tostring(message))
-    else
+    --
+    --print("Connected to Refined Storage ?")
+    --print("y/N")
+    --
+    --io.write("?")
+    --local choice = io.read()
+    --if choice == "y" then
+    --    --modem.open(2)
+    --    --
+    --    --local _, _, from, port, _, message = event.pull("modem_message")
+    --    --print("Got a message from " .. from .. " on port " .. port .. ": " .. tostring(message))
+    --else
         promptWhatToBuild()
-    end
-
+    --end
+--
 end
 
 return builder
