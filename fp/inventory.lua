@@ -40,19 +40,19 @@ function inventory.place(item)
 end
 
 function inventory.takeAllItems(ingredients)
+    local actualX = 0
+    local actualY = 0
     for i = 1, #ingredients do
         local ingredient = ingredients[i]
         move.turnRight()
-        move.forward(ingredient.item.emplacement.x)
+        move.forward(ingredient.item.emplacement.x - actualX)
+        actualX = ingredient.item.emplacement.x
         move.turnLeft()
-        move.up(ingredient.item.emplacement.y)
+
+        move.up(ingredient.item.emplacement.y - actualY)
+        actualY = ingredient.item.emplacement.y
 
         inventory.take(ingredient.item, ingredient.count)
-
-        move.down(ingredient.item.emplacement.y)
-        move.turnLeft()
-        move.forward(ingredient.item.emplacement.x)
-        move.turnLeft()
     end
 end
 
