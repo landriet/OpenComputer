@@ -70,6 +70,8 @@ function inventory.takeAllItems(ingredients)
 
         inventory.take(ingredient.item, ingredient.count)
     end
+
+    -- go back
     if actualY > 0 then
         move.down(actualY)
     elseif actualY < 0 then
