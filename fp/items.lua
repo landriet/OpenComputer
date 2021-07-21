@@ -24,6 +24,11 @@ local items = {
         slots = {},
         emplacement = { x = 2, y = 1 }
     },
+    GLITCHED_LARGE = {
+        name = "minecraft:glitched_large",
+        slots = {},
+        emplacement = { x = 2, y = 2 }
+    },
     IRON_BLOCK = {
         name = "minecraft:iron_block",
         slots = {},
@@ -39,11 +44,6 @@ local items = {
         name = "minecraft:machine_casing",
         slots = {},
         emplacement = { x = 3, y = 2 }
-    },
-    GLITCHED_LARGE = {
-        name = "minecraft:glitched_large",
-        slots = {},
-        emplacement = { x = 3, y = 1 }
     },
     GLITCHED_GIANT = {},
 }
