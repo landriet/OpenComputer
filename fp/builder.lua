@@ -37,7 +37,7 @@ local function place(item)
     end
 end
 
-local function dropCatalizer(item)
+local function dropCatalyzer(item)
     robot.select(item[#item])
     robot.drop()
 end
@@ -188,6 +188,50 @@ local function buildStructure(pattern)
     end
 end
 
+local function buildMachineWall(times)
+    move.strafRight(1)
+    move.up(2)
+    inventory.take(items.REDSTONE, times * 2)
+    move.strafRight(2)
+    move.down(2)
+    inventory.take(items.IRON_BLOCK, times)
+    move.turnLeft()
+    move.forward(3)
+    move.turnLeft()
+
+    for _ = 1, times do
+        move.forward()
+
+        -- Begin construction
+        place(items.IRON_BLOCK)
+        move.up()
+        place(items.REDSTONE)
+        move.down()
+
+        -- Drop catalyst
+        move.back()
+        dropCatalyzer(items.REDSTONE)
+
+        -- Wait the magic
+        waitForTheMagic(5)
+
+        if SUCK_FINAL_PRODUCT then
+            move.forward(2)
+            robot.suck()
+            move.back(1)
+        else
+            switchVacuum(true)
+            os.sleep()
+            switchVacuum(false)
+        end
+    end
+    move.back(1)
+    move.turnAround()
+    move.up(2)
+    inventory.dropAllItems()
+    move.down(2)
+end
+
 local function promptWhatToBuild()
     print("What would you like to craft ?")
     print("[1] " .. patterns.ENDER_PEARL.description)
@@ -195,11 +239,9 @@ local function promptWhatToBuild()
     io.write("? ")
     local choice = io.read()
 
-
     io.write("How many times shall I craft ? ")
     local times = io.read()
     print("Confirmed operation.")
-
 
     for i = 1, times do
         if choice == "1" then
@@ -216,7 +258,6 @@ end
 
 local builder = {}
 
-
 function builder.run()
     --
     --print("Connected to Refined Storage ?")
@@ -230,9 +271,10 @@ function builder.run()
     --    --local _, _, from, port, _, message = event.pull("modem_message")
     --    --print("Got a message from " .. from .. " on port " .. port .. ": " .. tostring(message))
     --else
-        promptWhatToBuild()
+    --promptWhatToBuild()
     --end
---
+    --
+    buildMachineWall(1)
 end
 
 return builder

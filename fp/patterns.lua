@@ -190,7 +190,7 @@ local patterns = {
             }
         },
         timeToWait = 13
-    },
+    }
 }
 
 return patterns

@@ -36,7 +36,11 @@ local items = {
     },
     HOPPER = {},
     MACHINE_CASING = {},
-    GLITCHED_LARGE = {},
+    GLITCHED_LARGE = {
+        name = "minecraft:glitched_large",
+        slots = {},
+        emplacement = { x = 3, y = 1 }
+    },
     GLITCHED_GIANT = {},
 }
 
