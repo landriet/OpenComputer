@@ -32,7 +32,7 @@ local function place(item)
     if (inventory.getStackInInternalSlot(item.slots[#item.slots]) == nil) then
         print(item.slots[#item.slots])
         print(#item.slots)
-        table.remove(item, #item.slots)
+        table.remove(item.slots, #item.slots)
         print(#item.slots)
     end
 end
@@ -82,42 +82,33 @@ end
 -- Build
 
 local function buildColumn(size, direction, pattern)
-    print("buildColumn")
-    print(direction)
     for i = 1, size do
         local item = pattern[direction == sides.up and i or size + 1 - i]
-        print(item.name)
         if item ~= nil then
             place(item)
         end
         if i ~= size then
-            print("move")
             move._move(direction)
         end
     end
 end
 
 local function buildPatternStartingOn(size, pattern, direction)
-    print("buildPatternStartingOn")
-    print(direction)
     local directions
     if (direction == sides.down) then
         directions = { sides.up, sides.down, sides.up, sides.down, sides.up }
     else
         directions = { sides.down, sides.up, sides.down, sides.up, sides.down }
     end
-    print(directions)
     for i = 1, size do
         buildColumn(size, directions[i], pattern[i])
         if i ~= size then
-            print("back")
             move.back()
         end
     end
 end
 
 local function buildStructure3(design)
-    print("buildStructure3")
     move.forward(3)
     -- Begin construction
     buildPatternStartingOn(3, design[1], sides.down)
@@ -198,22 +189,19 @@ local function buildStructure(pattern)
 end
 
 local function promptWhatToBuild()
-    --print("What would you like to craft ?")
-    --print("[1] " .. patterns.ENDER_PEARL.description)
-    --print("[2] " .. patterns.NORMAL_COMPACT_MACHINE.description)
-    --io.write("?")
-    --local choice = io.read()
-    local choice = "2"
+    print("What would you like to craft ?")
+    print("[1] " .. patterns.ENDER_PEARL.description)
+    print("[2] " .. patterns.NORMAL_COMPACT_MACHINE.description)
+    io.write("? ")
+    local choice = io.read()
 
 
-    --io.write("How many times shall I craft?")
-    --local times = io.read()
-    local times = 2
-    --print("Confirmed operation.")
+    io.write("How many times shall I craft ? ")
+    local times = io.read()
+    print("Confirmed operation.")
 
 
     for i = 1, times do
-        print("Building ", i)
         if choice == "1" then
             inventory.takeAllItems(patterns.ENDER_PEARL.ingredients)
             buildStructure(patterns.ENDER_PEARL)
