@@ -163,7 +163,7 @@ local patterns = {
                 { items.MACHINE_WALL, items.MACHINE_WALL, items.MACHINE_WALL },
             }
         },
-        timeToWait = 23
+        timeToWait = 25
     },
     ENDER_PEARL = {
         description = "Ender pearl",

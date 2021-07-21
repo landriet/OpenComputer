@@ -131,6 +131,7 @@ end
 
 local function buildStructure(pattern)
     -- collect items
+    inventory.takeAllItems(pattern.ingredients)
 
     -- move to position
     move.turnRight()
@@ -224,8 +225,10 @@ end
 
 local function promptWhatToBuild()
     print("What would you like to craft ?")
-    print("[1] " .. patterns.ENDER_PEARL.description)
-    print("[2] " .. patterns.NORMAL_COMPACT_MACHINE.description)
+    print("[1] Machine wall")
+    print("[2] " .. patterns.ENDER_PEARL.description)
+    print("[3] " .. patterns.NORMAL_COMPACT_MACHINE.description)
+    print("[4] " .. patterns.GIANT_COMPACT_MACHINE_3_BY_3.description)
     io.write("? ")
     local choice = io.read()
 
@@ -233,14 +236,18 @@ local function promptWhatToBuild()
     local times = io.read()
     print("Confirmed operation.")
 
-    for i = 1, times do
-        if choice == "1" then
-            inventory.takeAllItems(patterns.ENDER_PEARL.ingredients)
+    if choice == "1" then
+        buildMachineWall(times)
+    end
+    for _ = 1, times do
+        if choice == "2" then
             buildStructure(patterns.ENDER_PEARL)
         end
-        if choice == "2" then
-            inventory.takeAllItems(patterns.NORMAL_COMPACT_MACHINE.ingredients)
+        if choice == "3" then
             buildStructure(patterns.NORMAL_COMPACT_MACHINE)
+        end
+        if choice == "4" then
+            buildStructure(patterns.GIANT_COMPACT_MACHINE_3_BY_3)
         end
     end
     os.sleep(2)
@@ -264,7 +271,6 @@ function builder.run()
     --promptWhatToBuild()
     --end
     --
-    buildMachineWall(1)
 end
 
 return builder
