@@ -21,12 +21,19 @@ local USE_REDSTONE_SIGNAL = false
 -- Inventory
 
 local function place(item)
+    print("place")
     print(#item.slots)
     print(item.slots[#item.slots])
+    print("select")
     robot.select(item.slots[#item.slots])
+    print("place")
     robot.place()
+    print("getStackInInternalSlot")
     if (inventory.getStackInInternalSlot(item.slots[#item.slots]) == nil) then
+        print(item.slots[#item.slots])
+        print(#item.slots)
         table.remove(item, #item.slots)
+        print(#item.slots)
     end
 end
 
@@ -81,7 +88,6 @@ local function buildColumn(size, direction, pattern)
         local item = pattern[direction == sides.up and i or size + 1 - i]
         print(item.name)
         if item ~= nil then
-            print("place")
             place(item)
         end
         if i ~= size then
