@@ -21,25 +21,16 @@ local USE_REDSTONE_SIGNAL = false
 -- Inventory
 
 local function place(item)
-    print("place")
-    print(#item.slots)
-    print(item.slots[#item.slots])
-    print("select")
     robot.select(item.slots[#item.slots])
-    print("place")
     robot.place()
-    print("getStackInInternalSlot")
     if (inventory.getStackInInternalSlot(item.slots[#item.slots]) == nil) then
-        print(item.slots[#item.slots])
-        print(#item.slots)
         table.remove(item.slots, #item.slots)
-        print(#item.slots)
     end
 end
 
 local function dropCatalyzer(item)
     robot.select(item[#item])
-    robot.drop()
+    robot.drop(1)
 end
 
 local function waitForTheMagic(waitTime)
@@ -199,9 +190,8 @@ local function buildMachineWall(times)
     move.forward(3)
     move.turnLeft()
 
+    move.forward()
     for _ = 1, times do
-        move.forward()
-
         -- Begin construction
         place(items.IRON_BLOCK)
         move.up()
@@ -228,7 +218,7 @@ local function buildMachineWall(times)
     move.back(1)
     move.turnAround()
     move.up(2)
-    inventory.dropAllItems()
+    dropAllItems()
     move.down(2)
 end
 
