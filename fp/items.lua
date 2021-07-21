@@ -35,7 +35,11 @@ local items = {
         emplacement = { x = 3, y = 1 }
     },
     HOPPER = {},
-    MACHINE_CASING = {},
+    MACHINE_CASING = {
+        name = "minecraft:machine_casing",
+        slots = {},
+        emplacement = { x = 3, y = 2 }
+    },
     GLITCHED_LARGE = {
         name = "minecraft:glitched_large",
         slots = {},

@@ -268,7 +268,7 @@ function builder.run()
     --    --local _, _, from, port, _, message = event.pull("modem_message")
     --    --print("Got a message from " .. from .. " on port " .. port .. ": " .. tostring(message))
     --else
-    --promptWhatToBuild()
+    promptWhatToBuild()
     --end
     --
 end
