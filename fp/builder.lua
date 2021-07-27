@@ -129,61 +129,10 @@ local function buildStructure5(design)
     move.strafLeft(2)
 end
 
-local function buildStructure(pattern)
-    -- collect items
-    inventory.takeAllItems(pattern.ingredients)
-
-    -- move to position
-    move.turnRight()
-    move.forward()
-    move.turnRight()
-
-    -- build the structure
-    if pattern.size == 5 then
-        buildStructure5(pattern.design)
-    else
-        buildStructure3(pattern.design)
-    end
-
-    -- drop the catalyst
-    move.back()
-    robot.select(pattern.catalyst.slots[#pattern.catalyst.slots])
-    robot.drop(1)
-
-    -- wait for the magic
-    waitForTheMagic(pattern.timeToWait)
-
-    -- fetch final product or activate the vacuum
-    if SUCK_FINAL_PRODUCT then
-        if pattern.size == 5 then
-            move.forward(3)
-        else
-            move.forward(2)
-        end
-        robot.suck()
-        move.turnAround()
-        if pattern.size == 5 then
-            move.forward(3)
-        else
-            move.forward(2)
-        end
-        move.up()
-        move.up()
-        dropAllItems()
-        move.down()
-        move.down()
-    else
-        switchVacuum(true)
-        os.sleep()
-        switchVacuum(false)
-        move.turnAround()
-    end
-end
-
 local function buildMachineWall(times)
     move.strafRight(1)
     move.up(2)
-    inventory.take(items.REDSTONE, times * 2)
+    inventory.take(items.REDSTONE, (times * 2))
     move.strafRight(2)
     move.down(2)
     inventory.take(items.IRON_BLOCK, times)
@@ -242,6 +191,14 @@ local function promptWhatToBuild()
     end
     for count = 1, times do
         print(count)
+        -- collect items
+        inventory.takeAllItems(pattern.ingredients)
+
+        -- move to position
+        move.turnRight()
+        move.forward()
+        move.turnRight()
+
         if choice == "2" then
             buildStructure(patterns.ENDER_PEARL)
         end
@@ -260,6 +217,49 @@ local function promptWhatToBuild()
 end
 
 local builder = {}
+
+function builder.buildStructure(pattern)
+    -- build the structure
+    if pattern.size == 5 then
+        buildStructure5(pattern.design)
+    else
+        buildStructure3(pattern.design)
+    end
+
+    -- drop the catalyst
+    move.back()
+    robot.select(pattern.catalyst.slots[#pattern.catalyst.slots])
+    robot.drop(1)
+
+    -- wait for the magic
+    waitForTheMagic(pattern.timeToWait)
+
+    -- fetch final product or activate the vacuum
+    if SUCK_FINAL_PRODUCT then
+        if pattern.size == 5 then
+            move.forward(3)
+        else
+            move.forward(2)
+        end
+        robot.suck()
+        move.turnAround()
+        if pattern.size == 5 then
+            move.forward(3)
+        else
+            move.forward(2)
+        end
+        move.up()
+        move.up()
+        dropAllItems()
+        move.down()
+        move.down()
+    else
+        switchVacuum(true)
+        os.sleep()
+        switchVacuum(false)
+        move.turnAround()
+    end
+end
 
 function builder.run()
     --

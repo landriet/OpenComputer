@@ -4,8 +4,8 @@ local patterns = {
     LARGE_COMPACT_MACHINE_5_BY_5 = {
         size = 5,
         ingredients = {
-            { item = items.MACHINE_WALL, count = 98 },
-            { item = items.ENDER_PEARL, count = 1 },
+            { item = items.MACHINE_WALL, count = 98 ,},
+            { item = items.ENDER_PEARL, count = 1 ,},
         },
         catalyst = items.ENDER_PEARL,
         design = {
@@ -90,9 +90,9 @@ local patterns = {
         description = "Small compact machine",
         size = 3,
         ingredients = {
-            { items.MACHINE_WALL, 26 },
-            { items.IRON_BLOCK, 1 },
-            { items.ENDER_PEARL, 1 },
+            { item = items.MACHINE_WALL, count = 26 },
+            { item = items.IRON_BLOCK, count = 1 },
+            { item = items.ENDER_PEARL, count = 1 },
         },
         catalyst = items.ENDER_PEARL,
         design = {
@@ -166,13 +166,13 @@ local patterns = {
         timeToWait = 53
     },
     MAXIMUM_COMPACT_MACHINE_3_BY_3 = {
-        description = "Giant compact machine",
+        description = "Maximum compact machine",
         size = 3,
         ingredients = {
             { item = items.ENDER_PEARL, count = 1 },
             { item = items.MACHINE_WALL, count = 20 },
-            { item = items.GLITCHED_GIANT, count = 6 },
             { item = items.MACHINE_CASING, count = 1 },
+            { item = items.GLITCHED_GIANT, count = 6 },
         },
         catalyst = items.ENDER_PEARL,
         design = {
@@ -190,7 +190,7 @@ local patterns = {
                 { items.MACHINE_WALL, items.MACHINE_WALL, items.MACHINE_WALL },
             }
         },
-        timeToWait = 53
+        timeToWait = 50
     },
     ENDER_PEARL = {
         description = "Ender pearl",
