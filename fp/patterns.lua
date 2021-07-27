@@ -163,7 +163,34 @@ local patterns = {
                 { items.MACHINE_WALL, items.MACHINE_WALL, items.MACHINE_WALL },
             }
         },
-        timeToWait = 25
+        timeToWait = 53
+    },
+    MAXIMUM_COMPACT_MACHINE_3_BY_3 = {
+        description = "Giant compact machine",
+        size = 3,
+        ingredients = {
+            { item = items.ENDER_PEARL, count = 1 },
+            { item = items.MACHINE_WALL, count = 20 },
+            { item = items.GLITCHED_GIANT, count = 6 },
+            { item = items.MACHINE_CASING, count = 1 },
+        },
+        catalyst = items.ENDER_PEARL,
+        design = {
+            {
+                { items.MACHINE_WALL, items.MACHINE_WALL, items.MACHINE_WALL },
+                { items.MACHINE_WALL, items.GLITCHED_GIANT, items.MACHINE_WALL },
+                { items.MACHINE_WALL, items.MACHINE_WALL, items.MACHINE_WALL },
+            }, {
+                { items.MACHINE_WALL, items.GLITCHED_GIANT, items.MACHINE_WALL },
+                { items.GLITCHED_GIANT, items.MACHINE_CASING, items.GLITCHED_GIANT },
+                { items.MACHINE_WALL, items.GLITCHED_GIANT, items.MACHINE_WALL },
+            }, {
+                { items.MACHINE_WALL, items.MACHINE_WALL, items.MACHINE_WALL },
+                { items.MACHINE_WALL, items.GLITCHED_GIANT, items.MACHINE_WALL },
+                { items.MACHINE_WALL, items.MACHINE_WALL, items.MACHINE_WALL },
+            }
+        },
+        timeToWait = 53
     },
     ENDER_PEARL = {
         description = "Ender pearl",

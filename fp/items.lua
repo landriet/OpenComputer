@@ -45,7 +45,11 @@ local items = {
         slots = {},
         emplacement = { x = 3, y = 2 }
     },
-    GLITCHED_GIANT = {},
+    GLITCHED_GIANT = {
+        name = "minecraft:glitched_giant",
+        slots = {},
+        emplacement = { x = 4, y = 0}
+    },
 }
 
 return items

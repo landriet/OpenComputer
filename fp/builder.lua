@@ -229,6 +229,7 @@ local function promptWhatToBuild()
     print("[2] " .. patterns.ENDER_PEARL.description)
     print("[3] " .. patterns.NORMAL_COMPACT_MACHINE.description)
     print("[4] " .. patterns.GIANT_COMPACT_MACHINE_3_BY_3.description)
+    print("[5] " .. patterns.MAXIMUM_COMPACT_MACHINE_3_BY_3.description)
     io.write("? ")
     local choice = io.read()
 
@@ -239,7 +240,8 @@ local function promptWhatToBuild()
     if choice == "1" then
         buildMachineWall(times)
     end
-    for _ = 1, times do
+    for count = 1, times do
+        print(count)
         if choice == "2" then
             buildStructure(patterns.ENDER_PEARL)
         end
@@ -249,8 +251,12 @@ local function promptWhatToBuild()
         if choice == "4" then
             buildStructure(patterns.GIANT_COMPACT_MACHINE_3_BY_3)
         end
+        if choice == "5" then
+            buildStructure(patterns.MAXIMUM_COMPACT_MACHINE_3_BY_3)
+        end
     end
     os.sleep(2)
+    promptWhatToBuild()
 end
 
 local builder = {}
