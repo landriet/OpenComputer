@@ -123,7 +123,7 @@ function builder.place(item)
 end
 
 function builder.dropCatalyzer(item)
-    robot.select(item[#item])
+    robot.select(item.slots[#item.slots])
     robot.drop(1)
 end
 
