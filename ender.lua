@@ -11,7 +11,8 @@ local inventory = require("fp/inventory")
 local items = require("fp/items")
 local builder = require("fp/builder")
 
-local function run()
+local function ender()
+
     move.turnRight()
     move.forward()
     inventory.take(items.OBSIDIAN, 26)
@@ -112,25 +113,12 @@ local function run()
     move.turnRight()
     move.forward(1)
     move.turnLeft()
+end
 
-    ---- Wait the magic
-    --waitForTheMagic(5)
-
-    --if SUCK_FINAL_PRODUCT then
-    --    move.forward(2)
-    --    robot.suck()
-    --    move.back(1)
-    --else
-    --    switchVacuum(true)
-    --    os.sleep()
-    --    switchVacuum(false)
-    --end
-    --
-    --move.back(1)
-    --move.turnAround()
-    --move.up(2)
-    --dropAllItems()
-    --move.down(2)
+local function run()
+    for _ = 2, times do
+        ender()
+    end
 end
 
 run()
