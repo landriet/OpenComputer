@@ -104,11 +104,11 @@ local function run()
     builder.place(items.OBSIDIAN)
 
     -- Drop catalyst
+    move.down(2)
     move.back()
     builder.dropCatalyzer(items.REDSTONE)
 
     move.forward(6)
-    move.down(2)
     move.turnRight()
     move.forward(1)
     move.turnLeft()
