@@ -6,12 +6,12 @@ for k, _ in pairs(package.loaded) do
     end
 end
 
+local sides = require('sides')
+
 local move = require("fp/move")
 local patterns = require("fp/patterns")
-local sides = require('sides')
 local builder = require("fp/builder")
-local component = require("component")
-local inventory = component.inventory_controller
+local inventory = require("fp/inventory")
 
 local function hash(ingredients)
     local h = ""
@@ -33,6 +33,7 @@ local function run()
     local size = inventory.getInventorySize(sides.front);
     for i = 1, size do
         local slotItem = inventory.getStackInSlot(sides.front, i)
+        inventory.take(ingredient.item, slotItem.size)
         if (slotItem ~= nil) then
             local search = slotItem.name .. math.floor(slotItem.size)
             local patternsLeft = {}
